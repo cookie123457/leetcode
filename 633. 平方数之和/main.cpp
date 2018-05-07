@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  633. 平方数之和
+//  leetcode
 //
 //  Created by clown on 2018/5/6.
 //  Copyright © 2018 clown. All rights reserved.
