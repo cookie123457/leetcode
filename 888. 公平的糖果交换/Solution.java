@@ -18,7 +18,6 @@ class Solution {
         for (int num: B) {
             if (set.contains(num + delta)) {
                 return new int[]{num + delta, num};
-            }
         }
         return new int[]{-1, -1};
     }
