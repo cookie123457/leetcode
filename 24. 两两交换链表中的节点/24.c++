@@ -3,8 +3,8 @@
 using namespace std;
 /*
  思路1:遍历链表并压栈，若栈的大小等于2，则依次弹出栈中元素，并按照弹出顺序重新连接，重复直到全部遍历完成；
- 思路2:
-*/
+ 思路2:使用变量记录每一组的两个节点，直接逆序调整。
+ */
 
 struct ListNode {
     int val;
@@ -50,6 +50,46 @@ public:
         }
         cur->next = right;
         return cur;
+    }
+};
+
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* cur = head;
+        ListNode* start = NULL;
+        ListNode* pre = NULL;
+        ListNode* next = NULL;
+        int count = 1.;
+        while (cur != nullptr) {
+            next = cur->next;
+            if (count == 2) {
+                start = pre == nullptr ? head : pre->next;
+                head = pre == nullptr ? cur : head;
+                resign(pre, start, cur, next);
+                pre = start;
+                count = 0;
+            }
+            count++;
+            cur = next;
+        }
+        return head;
+    }
+    
+    void resign(ListNode* left, ListNode* start, ListNode* end, ListNode* right) {
+        ListNode* pre = start;
+        ListNode* cur = start->next;
+        ListNode* next = NULL;
+        while (cur != right) {
+            next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+            if (left != nullptr) {
+                left->next = end;
+            }
+            start->next = right;
+        }
     }
 };
 
