@@ -60,7 +60,7 @@ public:
         ListNode* start = NULL;
         ListNode* pre = NULL;
         ListNode* next = NULL;
-        int count = 1.;
+        int count = 1;
         while (cur != nullptr) {
             next = cur->next;
             if (count == 2) {
